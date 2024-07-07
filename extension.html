@@ -3,16 +3,24 @@
   <head>
     <meta name="author" content="Gerardo Vargas Fernández">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="extension.css">
   </head>
   <body>
     <h1>Clear tabs</h1>
     <div class="popupContent">
       <div class="buttons">
-        <button id="addBtn">Keep this tab</button>
-        <button id="removeBtn">Unkeep this tab</button>
-        <button id="clearBtn">clearTabs</button>
-        <button id="printBtn">See my kept tabs</button>
+        <button id="addBtn">Keep tab</button>
+        <button id="removeBtn">Unkeep tab</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+      <div class="toggle">
+        <label class="switch">
+          <input type="checkbox" id="showToggle">
+          <span class="slider round"></span>
+        </label>
       </div>
       <div class="list">
         <ul id="listaTabs"></ul>
@@ -22,7 +30,6 @@
   <script type="module" src="./tabClearer.js"></script>
   <script type="module" src="WhiteListManager.js"></script>
 </hmtl>
-
 <!--
   <a href="https://www.flaticon.com/free-icons/trash-can" title="trash can icons">Trash can icons created by Freepik - Flaticon</a>
 -->
