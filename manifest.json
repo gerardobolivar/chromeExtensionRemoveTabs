@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Clear my browser",
+  "name": "TabWipe",
   "description": "A Chrome extension for selective removal of extra tabs",
   "version": "1.0",
   "action": {
