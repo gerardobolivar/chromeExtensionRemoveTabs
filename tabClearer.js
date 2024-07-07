@@ -22,7 +22,6 @@ if(localStorage.getItem(TOOGLE_ID) != null){
 showListAtPopUp();
 
 function onClearTabs() {
-  console.log("Tabs cleared!");
 }
 
 function onClearError(error) {
@@ -50,7 +49,6 @@ function getToggleState(){
 
 function InitializeToggle(){
   toggleState = localStorage.getItem(TOOGLE_ID);
-  console.log(`Initializing toggle value to: ${toggleState}`);
 }
 
 function updateToggleState(value){
@@ -60,8 +58,6 @@ function updateToggleState(value){
 
 function showListAtPopUp(){
   populateList();
-  console.log(`Now we are at showListAtPopUp: toggleState: ${toggleState}`);
-  console.log(`toggleState == "true": ${toggleState == "true"}`);
   if(toggleState == "true"){
     showToggle.checked = true;
     updateToggleState("true");
@@ -77,8 +73,11 @@ addBtn.addEventListener("click", () => {
     try {
       let result = domainRegex.exec(tab[0].url);
       myStgManager.addToWhiteList(result[0]);
+      if(toggleState == "true"){
+        populateList();
+      }
     } catch (error) {
-      console.log("Action not allowed");
+      console.error("Action not allowed");
     }
   })
 });
@@ -88,6 +87,9 @@ removeBtn.addEventListener("click", () => {
     try {
       let result = domainRegex.exec(tab[0].url);
       myStgManager.removeFromWhiteList(result[0]);
+      if(toggleState == "true"){
+        populateList();
+      }
     } catch (error) {
       console.log("Action not allowed");
     }
@@ -102,7 +104,6 @@ clearBtn.addEventListener("click", () => {
       let result = domainRegex.exec(tab.url);
       if (tabsToSave.indexOf(result[0]) < 0) {
         idsToRemove.push(tab.id);
-        console.log(`Removing ${result[0]}`);
       }
     });
     let removing = chrome.tabs.remove(idsToRemove, onClearTabs)

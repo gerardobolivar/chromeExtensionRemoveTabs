@@ -12,9 +12,6 @@ export default class WhiteListManager{
     if(this.whiteList.indexOf(element) < 0){
       this.whiteList.push(element);
       this.UpdateWhiteList(this.whiteList);
-      console.log(`${element} added.`);
-    }else{
-      console.log(`${element} already added.`);
     }
   }
 
@@ -28,11 +25,11 @@ export default class WhiteListManager{
       })
       this.whiteList = newList;
       this.UpdateWhiteList(this.whiteList);
-      console.log(`${element} removed.`);
     }
   }
 
   printToConsole(){
+    //Dev purposes
     if(this.whiteList.length < 1 ){
       console.log("No elements in List.")
     }
@@ -57,9 +54,7 @@ export default class WhiteListManager{
   }
 
   InitializeList(){
-    console.log("Initializing list");
     let storageWhiteList = localStorage.getItem(this.id).split(",")
-    console.log(storageWhiteList);
     if(storageWhiteList.length > 0 && storageWhiteList[0] != ""){
       storageWhiteList.forEach((element) =>{
         this.whiteList.push(element);
